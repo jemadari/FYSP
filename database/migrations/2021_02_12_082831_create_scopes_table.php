@@ -16,7 +16,7 @@ class CreateScopesTable extends Migration
         Schema::create('scopes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('project_id')->nullable();
             $table->timestamps();
 
             //foreign key

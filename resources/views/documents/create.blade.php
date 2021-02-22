@@ -5,7 +5,9 @@
         <div class="col-md-6">
             <div class="card shadow-lg p-3 mb-5 bg-body rounded">
                 <div class="card-header">
-                    <h1 class="display-7">Document input</h1>
+                    <div class="d-flex justify-content-center">
+                        <h1 class="display-7">Document input</h1>
+                    </div>
                 </div>
 
                 <div class="container">
@@ -26,7 +28,9 @@
                                       </div>
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-primary1">Send</button>
+                                    <div class="d-flex justify-content-end">
+                                    <button class="btn btn-outline-primary">Save</button>
+                                    </div>
                                 </div>
                             </form>
                     </div>

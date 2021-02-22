@@ -16,7 +16,7 @@ class CreateSpecificObjectivesTable extends Migration
         Schema::create('specific_objectives', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('project_id')->nullable();
             $table->timestamps();
 
             //foreign key

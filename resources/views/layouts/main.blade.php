@@ -24,6 +24,12 @@
                     <a class="nav-link" href="{{ route('projects.index') }}">Projects</a>
                   </li>
                   <li class="nav-item">
+                    <a class="nav-link" href="{{ route('documents.index') }}">Documents</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('students.create') }}">Students</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                   </li>
                 </ul>

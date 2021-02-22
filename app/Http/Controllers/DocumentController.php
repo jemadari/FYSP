@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Document;
 use Illuminate\Http\Request;
+use App\Http\Requests\DocumentStoreRequest;
 
 class DocumentController extends Controller
 {
@@ -34,9 +35,11 @@ class DocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DocumentStoreRequest $request)
     {
-        //
+        $data = $request->validated();
+        Document::create($data);
+        return redirect()->route('documents.index')->with('status', 'Document created Successfully');
     }
 
     /**
@@ -47,7 +50,7 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-        //
+        return view('documents.show', compact('document'));
     }
 
     /**
@@ -58,7 +61,7 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        //
+        return view('documents.edit', compact('document'));
     }
 
     /**
@@ -68,9 +71,11 @@ class DocumentController extends Controller
      * @param  \App\Models\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Document $document)
+    public function update(DocumentStoreRequest $request, Document $document)
     {
-        //
+        $data = $request->validated();
+        $document->update($data);
+        return redirect()->route('documents.index')->with('status', 'Document Updated Successfully');
     }
 
     /**
@@ -81,6 +86,7 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        //
+        $document->delete();
+        return redirect()->back()->with('status', 'Document Deleted Successfully');
     }
 }

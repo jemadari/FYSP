@@ -10,4 +10,12 @@ class Project extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function scopes() {
+        return $this->hasMany('App\Models\Scope');
+    }
+
+    public function specificobjectives() {
+        return $this->hasMany('App\Models\SpecificObjective');
+    }
 }

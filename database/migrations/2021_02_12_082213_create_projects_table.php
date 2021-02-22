@@ -17,7 +17,11 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('general_object');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
+
+            //foreign key
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
         });
     }
 

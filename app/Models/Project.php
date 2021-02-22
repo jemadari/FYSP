@@ -18,4 +18,8 @@ class Project extends Model
     public function specificobjectives() {
         return $this->hasMany('App\Models\SpecificObjective');
     }
+
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
 }

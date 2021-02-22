@@ -19,12 +19,6 @@ Route::get('/', function () {
 
 Route::resource('users', 'App\Http\Controllers\Admin\UserController');
 
-Route::resource('/students', 'App\Http\Controllers\StudentController');
-
-Route::resource('/coordinators', 'App\Http\Controllers\CoordinatorController');
-
-Route::resource('/supervisors', 'App\Http\Controllers\SupervisorController');
-
 Route::resource('/projects', 'App\Http\Controllers\ProjectController');
 
 Route::resource('/documents', 'App\Http\Controllers\DocumentController');

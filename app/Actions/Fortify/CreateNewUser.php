@@ -37,5 +37,10 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+
+        $role_id = Role::where('name', 'Student')->pluck('id');
+        // dd($role_id);
+        $user->roles()->sync($role_id);
+        return $user;
     }
 }

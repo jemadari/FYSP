@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-9">
             <div class="card  shadow-lg p-3 mb-5 bg-body rounded">
                 <div class="card-header">
                     <div class="d-flex justify-content-center">
@@ -33,14 +33,14 @@
                                         <th scope="row">{{ ++$key }}</th>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>{{ implode(',', $user->roles->pluck('name')->toArray()) }}</td>
+                                        <td>{{ implode(', ', $user->roles->pluck('name')->toArray()) }}</td>
                                         <td>
                                             <a href="{{ route('users.show', $user) }}" class="btn btn-outline-primary" title="view"><i class="fas fa-eye"></i></a>
                                             <a href="{{ route('users.edit', $user) }}" class="btn btn-outline-secondary" title="Edit"><i class="fas fa-edit"></i></a>
-                                            <a href="#" class="btn btn-outline-danger" title="Delete" onclick="event.preventDefault(); document.getElementById('delete-user').submit();"><i class="fas fa-trash-alt"></i></a>
-                                            <form id="delete-user" action="{{ route('users.destroy', $user) }}" method="post">
-                                                @method('DELETE')
+                                            <a href="{{ route('users.destroy', $user) }}" class='btn btn-outline-danger' onclick="event.preventDefault(); document.querySelector('#delete-user').submit();"><i class="fas fa-trash-alt"></i></a>
+                                            <form action="{{ route('users.destroy', $user) }}" id="delete-user" method="POST">
                                                 @csrf
+                                                @method('DELETE')
                                             </form>
                                         </td>
                                     </tr>   

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,8 @@ Route::get('/', function () {
     return view('layouts.main');
 })->name('layouts.main');
 
-Route::resource('users', 'App\Http\Controllers\Admin\UserController');
+
+Route::resource('users', UserController::class);
 
 Route::resource('/projects', 'App\Http\Controllers\ProjectController');
 

@@ -18,28 +18,37 @@
                     @csrf
                     <div class="form-group">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="your name" value="{{ old('name') }}">
+                            <label class="form-label" for="name">Name</label>
+                            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter your Name" value="{{ old('name') }}">
                             @error('name')
-                                <span>{{ $message }}</span>
+                            <span>{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="text" name="email" class="form-control" id="email" placeholder="your email" value="{{ old('email') }}">
+                            <label class="form-label"  for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter your Email" value="{{ old('email') }}">
                             @error('email')
-                                <span>{{ $message }}</span>
+                            <span>{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="your name" value="{{ old('name') }}">
-                            @error('name')
-                                <span>{{ $message }}</span>
+                            <label class="form-label" for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter your Password">
+                            @error('password')
+                            <span>{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <label class="form-label" for="password_confirmation">Confirm Password</label>
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Confirm your Password">
+                            @error('password_confirmation')
+                            <span>{{ $message }}</span>
                             @enderror
                         </div>
                     </div>

@@ -20,6 +20,7 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('layouts.main') }}"><i class="fas fa-home"></i>Home</a>
                   </li>
+                  @can('is-admin')
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.projects.index') }}">Projects</a>
                   </li>
@@ -29,6 +30,7 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.users.index') }}">Users</a>
                   </li>
+                  @endcan
                   <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                   </li>

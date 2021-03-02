@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -66,7 +68,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $roles = Role::all();
+        return view('users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -93,9 +96,14 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $user, Request $request)
     {
+        if (Auth::user() === $user) {
+            $request->session()->flash('danger', 'You are not allowed to deleted yourself');
+            return redirect()->back();    
+        }
         $user->delete();
-        return redirect()->back()->with('status', 'User deleted successfully');
+        $request->session()->flash('success', 'User deleted successfully');
+        return redirect()->back();
     }
 }

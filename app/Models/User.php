@@ -48,4 +48,19 @@ class User extends Authenticatable
     public function  projects() {
         return $this->hasMany('App\Models\Project');
     }
+
+    public function hasAnyRole($role) {
+        // return null !== $this->roles()->where('name', $role)->first();
+        if ($this->roles()->where('name', $role)->first()) {
+            return true;
+        }
+        return false;
+    }
+
+    public function hasRoles($roles) {
+        if ($this->roles()->whereIn('name', $roles)->first()) {
+            return true;
+        }
+        return false;
+    }
 }

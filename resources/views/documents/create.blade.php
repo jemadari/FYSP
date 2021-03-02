@@ -13,7 +13,7 @@
                 <div class="container">
 
                     <div class="row justify-content-center">
-                            <form action="{{ route('documents.store') }}" method="post">
+                            <form action="{{ route('admin.documents.store') }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <div class="mb-3">

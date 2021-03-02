@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="container">
-                <form action="{{ route('projects.update', $project) }}" method="post">
+                <form action="{{ route('admin.projects.update', $project) }}" method="post">
                     @method('PATCH')
                     @csrf
                     <div class="form-group">

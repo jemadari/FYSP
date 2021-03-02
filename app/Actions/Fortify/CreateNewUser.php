@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use App\Models\Role;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -32,7 +33,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        return User::create([
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
@@ -40,7 +41,7 @@ class CreateNewUser implements CreatesNewUsers
 
         $role_id = Role::where('name', 'Student')->pluck('id');
         // dd($role_id);
-        $user->roles()->sync($role_id);
+        $user->roles()->attach($role_id);
         return $user;
     }
 }

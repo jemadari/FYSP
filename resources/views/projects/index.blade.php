@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <a class="btn btn-outline-primary" href="{{ route('projects.create') }}"><i class="fas fa-plus"></i> Project</a>
+                <a class="btn btn-outline-primary" href="{{ route('admin.projects.create') }}"><i class="fas fa-plus"></i> Project</a>
             </div>
             @if(session('status'))
                 <p class="alert alert-success" role="alert">{{session('status')}}</p>
@@ -34,10 +34,10 @@
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->general_object }}</td>
                         <td>
-                            <a class="btn btn-outline-primary" href="{{route('projects.show', $project)}}"><i class="fas fa-eye"></i></a>
-                            <a href="{{ route('projects.edit', $project) }}" class="btn btn-outline-secondary"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-outline-primary" href="{{route('admin.projects.show', $project)}}"><i class="fas fa-eye"></i></a>
+                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-outline-secondary"><i class="fas fa-edit"></i></a>
                             <a href="" class="btn btn-outline-danger" onclick="event.preventDefault(); document.getElementById('delete-project').submit();"><i class="fas fa-trash-alt"></i></a> 
-                            <form action="{{route('projects.destroy', $project)}}" method="post" id="delete-project">
+                            <form action="{{route('admin.projects.destroy', $project)}}" method="post" id="delete-project">
                                 @method('DELETE')
                                 @csrf
                             </form>

@@ -39,7 +39,7 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
         Project::create($data);
-        return redirect()->route('projects.index')->with('status', 'Project is created successfully');
+        return redirect()->route('admin.projects.index')->with('status', 'Project is created successfully');
     }
 
     /**
@@ -75,7 +75,7 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
         $project->update($data);
-        return redirect()->route('projects.index')->with('status', 'Project is updated successfully');
+        return redirect()->route('admin.projects.index')->with('status', 'Project is updated successfully');
     }
 
     /**

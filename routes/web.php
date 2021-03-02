@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('layouts.main');
 })->name('layouts.main');
 
+Route::prefix('admin')->name('admin.')->middleware('auth')->group( function() {
 
 Route::resource('users', UserController::class);
 
@@ -28,3 +29,5 @@ Route::resource('/documents', 'App\Http\Controllers\DocumentController');
 Route::resource('/scopes', 'App\Http\Controllers\ScopeController');
 
 Route::resource('/significances', 'App\Http\Controllers\SignificanceController');
+
+});

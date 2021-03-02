@@ -13,7 +13,7 @@
             </div>
            </div>
             <div class="container">
-                <form action="{{ route('projects.store') }}" method="post">
+                <form action="{{ route('admin.projects.store') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <div class="mb-3">

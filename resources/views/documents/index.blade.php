@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <a href="{{ route('documents.create') }}" class="btn btn-outline-primary"><i class="fas fa-plus"></i> documents</a>
+                <a href="{{ route('admin.documents.create') }}" class="btn btn-outline-primary"><i class="fas fa-plus"></i> documents</a>
             </div>
             @if (session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>

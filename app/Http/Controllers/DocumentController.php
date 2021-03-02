@@ -39,7 +39,7 @@ class DocumentController extends Controller
     {
         $data = $request->validated();
         Document::create($data);
-        return redirect()->route('documents.index')->with('status', 'Document created Successfully');
+        return redirect()->route('admin.documents.index')->with('status', 'Document created Successfully');
     }
 
     /**
@@ -75,7 +75,7 @@ class DocumentController extends Controller
     {
         $data = $request->validated();
         $document->update($data);
-        return redirect()->route('documents.index')->with('status', 'Document Updated Successfully');
+        return redirect()->route('admin.documents.index')->with('status', 'Document Updated Successfully');
     }
 
     /**

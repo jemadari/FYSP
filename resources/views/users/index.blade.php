@@ -12,9 +12,6 @@
                         </h1>
                     </div>
                 </div>
-                <div class="d-flex justify-content-end">
-                    <a class="btn btn-outline-primary" href="{{ route('users.create') }}"><i class="fas fa-plus"></i> user</a>
-                </div>
                 @if (count($users) > 0)
                     <div class="table-responsive">
                         <table class="table table-light table-striped table-hover">
@@ -35,12 +32,13 @@
                                         <td>{{$user->email}}</td>
                                         <td>{{ implode(', ', $user->roles->pluck('name')->toArray()) }}</td>
                                         <td>
-                                            <a href="{{ route('users.show', $user) }}" class="btn btn-outline-primary" title="view"><i class="fas fa-eye"></i></a>
-                                            <a href="{{ route('users.edit', $user) }}" class="btn btn-outline-secondary" title="Edit"><i class="fas fa-edit"></i></a>
-                                            <a href="{{ route('users.destroy', $user) }}" class='btn btn-outline-danger' onclick="event.preventDefault(); document.querySelector('#delete-user').submit();"><i class="fas fa-trash-alt"></i></a>
-                                            <form action="{{ route('users.destroy', $user) }}" id="delete-user" method="POST">
+                                            <a href="{{ route('admin.users.show', $user) }}" class="btn btn-outline-primary" title="view"><i class="fas fa-eye"></i></a>
+                                            <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-outline-secondary" title="Edit"><i class="fas fa-edit"></i></a>
+                                            {{-- <a href="{{ route('users.destroy', $user) }}" class='btn btn-outline-danger' onclick="event.preventDefault(); document.querySelector('#delete-user').submit();"><i class="fas fa-trash-alt"></i></a> --}}
+                                            <form action="{{ route('admin.users.destroy', $user) }}" id="delete-user" method="POST">
                                                 @csrf
                                                 @method('DELETE')
+                                                <button type="submit" class='btn btn-outline-danger'><i class="fas fa-trash-alt"></i></button>
                                             </form>
                                         </td>
                                     </tr>   

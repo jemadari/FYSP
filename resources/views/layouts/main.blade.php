@@ -21,13 +21,13 @@
                     <a class="nav-link active" aria-current="page" href="{{ route('layouts.main') }}"><i class="fas fa-home"></i>Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('projects.index') }}">Projects</a>
+                    <a class="nav-link" href="{{ route('admin.projects.index') }}">Projects</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('documents.index') }}">Documents</a>
+                    <a class="nav-link" href="{{ route('admin.documents.index') }}">Documents</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users.index') }}">Users</a>
+                    <a class="nav-link" href="{{ route('admin.users.index') }}">Users</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>

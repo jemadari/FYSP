@@ -24,16 +24,18 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.projects.index') }}">Projects</a>
                   </li>
+                  @endcan
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.documents.index') }}">Documents</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.users.index') }}">Users</a>
                   </li>
-                  @endcan
+                  @can('AdminCoordinator')
                   <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                   </li>
+                  @endcan
                 </ul>
                 <div class="d-flex">
                     @if (Route::has('login'))

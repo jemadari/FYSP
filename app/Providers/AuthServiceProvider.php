@@ -41,8 +41,8 @@ class AuthServiceProvider extends ServiceProvider
              return $user->hasAnyRoles('Student');
          });
 
-         Gate::define('AdminCoordinator', function ($user) {
-             return $user->hasRoles(['Admin', 'Coordinator']);
+         Gate::define('is-CSS', function ($user) {
+            return $user->hasRoles(['Coordinator', 'Supervisor', 'Student']);
          });
     }
 }

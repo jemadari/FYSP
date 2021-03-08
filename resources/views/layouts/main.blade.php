@@ -20,17 +20,21 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('layouts.main') }}"><i class="fas fa-home"></i>Home</a>
                   </li>
-                  @can('is-admin')
+                  @can('is-CSS')
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.projects.index') }}">Projects</a>
                   </li>
                   @endcan
+                  @can('is-CSS')
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.documents.index') }}">Documents</a>
                   </li>
+                  @endcan
+                  @can('is-admin')
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.users.index') }}">Users</a>
                   </li>
+                  @endcan
                   @can('AdminCoordinator')
                   <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>

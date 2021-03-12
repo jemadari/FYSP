@@ -9,6 +9,7 @@
                 <div class="d-flex justify-content-center">
                     <h1 class="display-7">Projects</h1>
                 </div>
+                @include('partials.message')
             </div>
             <div class="d-flex justify-content-end">
                 <a class="btn btn-outline-primary" href="{{ route('admin.projects.create') }}"><i class="fas fa-plus"></i> Project</a>
@@ -36,16 +37,18 @@
                         <td>
                             <a class="btn btn-outline-primary" href="{{route('admin.projects.show', $project)}}"><i class="fas fa-eye"></i></a>
                             <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-outline-secondary"><i class="fas fa-edit"></i></a>
-                            <a href="" class="btn btn-outline-danger" onclick="event.preventDefault(); document.getElementById('delete-project').submit();"><i class="fas fa-trash-alt"></i></a> 
+                            {{-- <a href="" class="btn btn-outline-danger" onclick="event.preventDefault(); document.getElementById('delete-project').submit();"><i class="fas fa-trash-alt"></i></a>  --}}
                             <form action="{{route('admin.projects.destroy', $project)}}" method="post" id="delete-project">
                                 @method('DELETE')
                                 @csrf
+                                <button class="btn btn-outline-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
                             </form>
                         </td>
                     </tr>
                     @endforeach    
                     </tbody>
                 </table>
+                {{ $projects->links() }}
             </div>
             @else
                 <p class="alert alert-warning" role="alert">No project found in the database!!!</p>

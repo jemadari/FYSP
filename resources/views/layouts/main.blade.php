@@ -46,6 +46,10 @@
                     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                         @auth
                             {{-- <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a> --}}
+                            <span class="auth">
+                              {{ Auth::user()->name }}
+                            </span>
+                            &nbsp;&nbsp;
                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout').submit();" class="text-sm text-gray-700 underline">Logout</a>
                             <form action="{{ route('logout') }}" id="logout" method="post">
                               @csrf

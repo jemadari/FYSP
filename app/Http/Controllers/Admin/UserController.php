@@ -18,7 +18,7 @@ class UserController extends Controller
     public function index()
     {
         return view('users.index')->with([
-            'users' => User::all()
+            'users' => User::paginate(8)
         ]);
     }
 
@@ -81,12 +81,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $data = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
-        ]);
-        $user->update($data);
+        // dd($request);
+        // $data = $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'password' => 'required'
+        // ]);
+        $user->update($request->except(['_token', 'roles']));
+        $user->roles()->sync($request->roles);
         return redirect()->route('admin.users.index');
     }
 
@@ -98,7 +100,8 @@ class UserController extends Controller
      */
     public function destroy(User $user, Request $request)
     {
-        if (Auth::user() === $user) {
+        // return Auth::user()->name;
+        if (Auth::user()->id === $user->id) {
             $request->session()->flash('danger', 'You are not allowed to deleted yourself');
             return redirect()->back();    
         }

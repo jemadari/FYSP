@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectStoreRequest;
+use Auth;
+use App\Models\User;
 
 class ProjectController extends Controller
 {
@@ -15,8 +17,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
-        return view('projects.index', compact('projects'));
+        $users = User::all();
+        $projects = Project::paginate(8);
+        return view('projects.index', compact('projects', 'users'));
     }
 
     /**
@@ -84,9 +87,14 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(Project $project, Request $request, User $user)
     {
+        if (Auth::user()->id  !== $user->id) {
+            $request->session()->flash('danger', 'You are not allowed to delete this project');
+            return redirect()->back();    
+        }
         $project->delete();
-        return redirect()->back()->with('status', 'Project is deleted successfully');
+        $request->session()->flash('success', 'project deleted successfully');
+        return redirect()->back();
     }
 }

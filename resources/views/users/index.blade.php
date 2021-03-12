@@ -11,6 +11,7 @@
                             Users
                         </h1>
                     </div>
+                    @include('partials.message')
                 </div>
                 @if (count($users) > 0)
                     <div class="table-responsive">
@@ -45,6 +46,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $users->links() }}
                     </div>
                 @else
                     <div class="alert alert-warning" role="alert">

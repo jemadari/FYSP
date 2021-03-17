@@ -23,8 +23,9 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
+                            <th scope="col">Title</th>
                             <th scope="col">General objective</th>
+                            <th scope="col">Owner</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -34,6 +35,7 @@
                         <th scope="row">{{ ++$key }}</th>
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->general_object }}</td>
+                        <td>{{ $project->user->name }}</td>
                         <td>
                             <a class="btn btn-outline-primary" href="{{route('admin.projects.show', $project)}}"><i class="fas fa-eye"></i></a>
                             <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-outline-secondary"><i class="fas fa-edit"></i></a>

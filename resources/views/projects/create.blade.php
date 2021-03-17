@@ -32,6 +32,14 @@
                             <div class="alert alert-warning">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <label for="userid" class="form-label">Owner</label>
+                            <input type="text" name="user_id" id="userid" class="form-control" value="{{ old('user_id') }}" placeholder="Owner's name">
+                            @error('user_id')
+                                <div class="alert alert-warning">{{ $message }}</div>
+                            @enderror
+                        </div>
                 </div>
                 <div class="form-group">
                     <div class="d-flex justify-content-end">
